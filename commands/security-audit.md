@@ -364,9 +364,9 @@ Line: 42
 ```
 Name: rack
 Version: 2.2.8
-CVE: CVE-2024-XXXXX
+CVE: CVE-2024-25126
 Criticality: High
-URL: https://nvd.nist.gov/vuln/detail/CVE-2024-XXXXX
+URL: https://nvd.nist.gov/vuln/detail/CVE-2024-25126
 Solution: upgrade to ~> 2.2.9
 ```
 

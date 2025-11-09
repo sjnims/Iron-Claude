@@ -286,7 +286,7 @@ Creates `.iron-claude/milestone.json`:
 ## Database Migrations
 
 ```ruby
-# db/migrate/XXXXXX_create_users.rb
+# db/migrate/<TIMESTAMP>_create_users.rb
 class CreateUsers < ActiveRecord::Migration[8.0]
   def change
     create_table :users do |t|
