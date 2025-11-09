@@ -5,6 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Rails](https://img.shields.io/badge/Rails-8.0-red.svg)](https://rubyonrails.org)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin-blue.svg)](https://claude.com/claude-code)
+[![CI](https://github.com/sjnims/Iron-Claude/actions/workflows/test.yml/badge.svg)](https://github.com/sjnims/Iron-Claude/actions/workflows/test.yml)
 
 Iron Claude is a comprehensive Claude Code plugin that embodies DHH's omakase philosophy, providing four specialized personas that catch blind spots, enforce TDD workflows, and help solo developers ship production-ready Rails 8 applications with confidence.
 
