@@ -24,11 +24,21 @@ Iron Claude is a comprehensive Claude Code plugin that embodies DHH's omakase ph
 **From Marketplace (Recommended)**
 
 ```bash
-# Add the Iron Claude marketplace
-claude plugin marketplace add sjnims/Iron-Claude
+# Add the Iron Claude marketplace (GitHub shorthand)
+/plugin marketplace add sjnims/Iron-Claude
 
 # Install the plugin
-claude plugin install iron-claude
+/plugin install iron-claude
+```
+
+Or use the direct marketplace URL:
+
+```bash
+# Add via marketplace.json URL
+/plugin marketplace add https://raw.githubusercontent.com/sjnims/Iron-Claude/main/.claude-plugin/marketplace.json
+
+# Install the plugin
+/plugin install iron-claude
 ```
 
 **From Source (Alternative)**
@@ -37,7 +47,7 @@ For development or testing:
 
 ```bash
 git clone https://github.com/sjnims/Iron-Claude.git
-claude plugin install ./Iron-Claude
+/plugin install ./Iron-Claude
 ```
 
 ### First Feature

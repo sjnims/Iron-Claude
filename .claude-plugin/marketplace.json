@@ -11,7 +11,10 @@
   "plugins": [
     {
       "name": "iron-claude",
-      "source": ".",
+      "source": {
+        "source": "github",
+        "repo": "sjnims/Iron-Claude"
+      },
       "description": "Rails 8 omakase development assistant with 4 specialized personas for catching blind spots, enforcing TDD, and embodying DHH's philosophy",
       "version": "1.0.0",
       "author": {
