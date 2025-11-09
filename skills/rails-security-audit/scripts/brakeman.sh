@@ -27,7 +27,7 @@ echo "Scanning for security vulnerabilities..."
 echo ""
 
 # Run Brakeman, save to temp file
-TEMP_FILE=$(mktemp)
+TEMP_FILE=$(mktemp) || { echo "Failed to create temp file"; exit 1; }
 
 # Temporarily allow errors (brakeman returns non-zero when vulnerabilities found)
 set +e

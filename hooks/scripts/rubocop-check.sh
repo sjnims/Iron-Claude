@@ -1,7 +1,13 @@
 #!/bin/bash
 # Auto-format Ruby code with RuboCop
 
-FILE_PATH="$1"
+# Add validation
+FILE_PATH="${1:-}"
+
+if [ -z "$FILE_PATH" ]; then
+  echo "Error: No file path provided"
+  exit 0
+fi
 
 # Check if file exists
 if [ ! -f "$FILE_PATH" ]; then

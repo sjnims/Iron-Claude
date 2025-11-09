@@ -1,7 +1,13 @@
 #!/bin/bash
 # Run tests for changed test files
 
-TEST_FILE="$1"
+# Add validation
+TEST_FILE="${1:-}"
+
+if [ -z "$TEST_FILE" ]; then
+  echo "Error: No file path provided"
+  exit 0
+fi
 
 # Check if file exists
 if [ ! -f "$TEST_FILE" ]; then
