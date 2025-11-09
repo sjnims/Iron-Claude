@@ -32,16 +32,6 @@
     "personas",
     "deployment"
   ],
-  "agents": [
-    "agents/"
-  ],
-  "commands": [
-    "commands/"
-  ],
-  "skills": [
-    "skills/"
-  ],
-  "hooks": "hooks/hooks.json",
-  "mcpServers": ".mcp.json",
-  "minClaudeCodeVersion": "1.0.0"
+  "hooks": "./hooks/hooks.json",
+  "mcpServers": "./.mcp.json"
 }
