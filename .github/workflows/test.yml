@@ -26,7 +26,7 @@ jobs:
           fi
 
           failed=0
-          for file in $json_files; do
+          while IFS= read -r file; do
             echo "Checking $file"
             if ! jq empty "$file" 2>/dev/null; then
               echo "❌ Invalid JSON: $file"
@@ -34,7 +34,7 @@ jobs:
             else
               echo "✅ Valid: $file"
             fi
-          done
+          done <<< "$json_files"
 
           if [ $failed -eq 1 ]; then
             echo "❌ JSON validation failed"
@@ -58,7 +58,7 @@ jobs:
           fi
 
           failed=0
-          for script in $shell_scripts; do
+          while IFS= read -r script; do
             echo "Checking $script"
             if ! shellcheck "$script"; then
               echo "❌ Shellcheck failed: $script"
@@ -66,7 +66,7 @@ jobs:
             else
               echo "✅ Valid: $script"
             fi
-          done
+          done <<< "$shell_scripts"
 
           if [ $failed -eq 1 ]; then
             echo "❌ Shell script validation failed"
@@ -89,7 +89,7 @@ jobs:
           fi
 
           failed=0
-          for file in $md_files; do
+          while IFS= read -r file; do
             echo "Checking links in $file"
             if ! markdown-link-check "$file" --quiet 2>/dev/null; then
               echo "⚠️  Some links may be broken in $file (non-blocking)"
@@ -97,7 +97,7 @@ jobs:
             else
               echo "✅ Links OK: $file"
             fi
-          done
+          done <<< "$md_files"
 
           echo "✅ Markdown link check complete"
 
