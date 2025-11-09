@@ -4,6 +4,7 @@
   "description": "Rails 8 omakase development assistant with 4 specialized personas for catching blind spots, enforcing TDD, and embodying DHH's philosophy",
   "author": {
     "name": "Steve Nims",
+    "email": "sjnims@gmail.com",
     "url": "https://github.com/sjnims/Iron-Claude"
   },
   "homepage": "https://github.com/sjnims/Iron-Claude",
