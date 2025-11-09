@@ -1,6 +1,7 @@
+---
 name: Plugin Validation
 
-on:
+'on':
   push:
     branches: [main]
   pull_request:
@@ -18,7 +19,9 @@ jobs:
       - name: Validate JSON files
         run: |
           echo "🔍 Validating JSON files..."
-          json_files=$(find . -name "*.json" -not -path "*/node_modules/*" -not -path "*/.git/*")
+          json_files=$(find . -name "*.json" \
+            -not -path "*/node_modules/*" \
+            -not -path "*/.git/*")
 
           if [ -z "$json_files" ]; then
             echo "⚠️  No JSON files found"
@@ -50,7 +53,9 @@ jobs:
           sudo apt-get install -y shellcheck
 
           echo "🔍 Validating shell scripts..."
-          shell_scripts=$(find . -name "*.sh" -not -path "*/node_modules/*" -not -path "*/.git/*")
+          shell_scripts=$(find . -name "*.sh" \
+            -not -path "*/node_modules/*" \
+            -not -path "*/.git/*")
 
           if [ -z "$shell_scripts" ]; then
             echo "⚠️  No shell scripts found"
@@ -81,7 +86,9 @@ jobs:
           npm install -g markdown-link-check
 
           echo "🔍 Checking markdown links..."
-          md_files=$(find . -name "*.md" -not -path "*/node_modules/*" -not -path "*/.git/*")
+          md_files=$(find . -name "*.md" \
+            -not -path "*/node_modules/*" \
+            -not -path "*/.git/*")
 
           if [ -z "$md_files" ]; then
             echo "⚠️  No markdown files found"
