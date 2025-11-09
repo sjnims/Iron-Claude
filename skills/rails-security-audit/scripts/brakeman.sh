@@ -28,13 +28,15 @@ echo ""
 
 # Run Brakeman, save to temp file
 TEMP_FILE=$(mktemp)
-brakeman --format json --output "$TEMP_FILE" --quiet --no-pager 2>&1
 
-# Check if scan succeeded
-if [ $? -ne 0 ] && [ ! -s "$TEMP_FILE" ]; then
-  echo "❌ Brakeman scan failed"
-  rm -f "$TEMP_FILE"
-  exit 1
+# Check if scan succeeded (allow non-zero exit if we got output)
+if ! brakeman --format json --output "$TEMP_FILE" --quiet --no-pager 2>&1; then
+  # Brakeman failed - check if we got any output
+  if [ ! -s "$TEMP_FILE" ]; then
+    echo "❌ Brakeman scan failed"
+    rm -f "$TEMP_FILE"
+    exit 1
+  fi
 fi
 
 # Parse results
