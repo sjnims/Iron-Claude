@@ -91,8 +91,7 @@ jobs:
           failed=0
           for file in $md_files; do
             echo "Checking links in $file"
-            if ! markdown-link-check "$file" --quiet --config .github/workflows/markdown-link-check-config.json 2>/dev/null || \
-               ! markdown-link-check "$file" --quiet 2>/dev/null; then
+            if ! markdown-link-check "$file" --quiet 2>/dev/null; then
               echo "⚠️  Some links may be broken in $file (non-blocking)"
               # Don't fail the build for link checking - just warn
             else
