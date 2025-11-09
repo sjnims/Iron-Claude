@@ -18,22 +18,13 @@ if ! command -v shellcheck &> /dev/null; then
   exit 1
 fi
 
-# Find all shell scripts
-shell_scripts=$(find . -name "*.sh" \
-  -not -path "*/node_modules/*" \
-  -not -path "*/.git/*")
-
-if [ -z "$shell_scripts" ]; then
-  echo "⚠️  No shell scripts found"
-  exit 0
-fi
-
 # Track failures
 failed=0
 total=0
 
-# Check each script
-while IFS= read -r script; do
+# Find and check all shell scripts
+# Using -print0 and read -d '' to handle filenames with spaces/special characters
+while IFS= read -r -d '' script; do
   total=$((total + 1))
   echo "Checking $script"
   if ! shellcheck "$script"; then
@@ -42,7 +33,16 @@ while IFS= read -r script; do
   else
     echo "✅ Valid: $script"
   fi
-done <<< "$shell_scripts"
+done < <(find . -name "*.sh" \
+  -not -path "*/node_modules/*" \
+  -not -path "*/.git/*" \
+  -print0)
+
+# Check if no scripts were found
+if [ $total -eq 0 ]; then
+  echo "⚠️  No shell scripts found"
+  exit 0
+fi
 
 # Report results
 echo ""
