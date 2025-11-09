@@ -29,7 +29,8 @@ echo ""
 # Run Brakeman, save to temp file
 TEMP_FILE=$(mktemp)
 
-# Check if scan succeeded (allow non-zero exit if we got output)
+# Temporarily allow errors (brakeman returns non-zero when vulnerabilities found)
+set +e
 if ! brakeman --format json --output "$TEMP_FILE" --quiet --no-pager; then
   # Brakeman failed - check if we got any output
   if [ ! -s "$TEMP_FILE" ]; then
@@ -38,6 +39,7 @@ if ! brakeman --format json --output "$TEMP_FILE" --quiet --no-pager; then
     exit 1
   fi
 fi
+set -e
 
 # Parse results
 if command -v jq &> /dev/null; then
