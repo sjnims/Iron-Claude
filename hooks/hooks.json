@@ -1,0 +1,64 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/load-milestone.sh",
+            "description": "Load current milestone context for session"
+          }
+        ]
+      }
+    ],
+
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Before ending this session, review milestone completion status:\n\n**Current Milestone**: ${MILESTONE:-No milestone set}\n\n**Validation Checklist**:\n\n1. **TDD Workflow** (@qa-tester perspective):\n   - Were tests written BEFORE implementation?\n   - Is test coverage ≥90%?\n   - Are edge cases covered?\n\n2. **UX & Hotwire** (@product-manager perspective):\n   - Does the feature solve the user problem?\n   - Are Hotwire patterns used correctly?\n   - Is it mobile-responsive and accessible?\n\n3. **Security & Conventions** (@code-reviewer perspective):\n   - Are there any security vulnerabilities?\n   - Are Rails conventions followed?\n   - Is the omakase stack adhered to?\n\n4. **Performance & Deployment** (@devops-engineer perspective):\n   - Are there N+1 queries or missing indexes?\n   - Is the health check functional?\n   - Are database migrations reversible?\n\n**Instructions**: If ANY criteria are incomplete or questionable, you MUST block this session from ending and ask the user to address the issues. Use `\"decision\": \"block\"` with a clear explanation of what's missing.\n\nIf all criteria are met, approve with `\"decision\": \"approve\"`.\n\nRespond in JSON format:\n```json\n{\n  \"decision\": \"approve\" or \"block\",\n  \"reason\": \"Detailed explanation\",\n  \"missingItems\": [\"List of incomplete items if blocking\"],\n  \"continue\": false\n}\n```",
+            "timeout": 45
+          }
+        ]
+      }
+    ],
+
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit.*\\.rb$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/rubocop-check.sh \"${TOOL_ARGS_FILE}\"",
+            "description": "Auto-format Ruby code with RuboCop",
+            "timeout": 30
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit.*_test\\.rb$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/scripts/test-changed.sh \"${TOOL_ARGS_FILE}\"",
+            "description": "Run tests for changed test files",
+            "timeout": 120
+          }
+        ]
+      }
+    ],
+
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "The user submitted a new request. Before proceeding:\n\n1. Check if this is starting a new feature or milestone\n2. If yes, remind the user to follow TDD (test-first)\n3. Suggest setting a milestone context for tracking\n\nUser request: ${USER_PROMPT}\n\nIf this appears to be a new feature, gently remind about TDD workflow and offer to help set up the milestone context. Otherwise, proceed normally.\n\nDo NOT block or delay - just provide helpful context if relevant.",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}
