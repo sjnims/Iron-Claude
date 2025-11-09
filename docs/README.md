@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/banner.svg" alt="Iron Claude Banner">
+  <img src="images/banner.svg?v=2" alt="Iron Claude Banner">
 </p>
 
 # Iron Claude
