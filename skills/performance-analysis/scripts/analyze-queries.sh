@@ -28,13 +28,13 @@ N1_SUSPECTS=0
 
 if grep -r "\.all$" app/controllers --include="*.rb" > /dev/null 2>&1; then
   echo "⚠️  Found .all without eager loading in controllers:"
-  grep -rn "\.all$" app/controllers --include="*.rb"  | head -5
+  grep -rn "\.all$" app/controllers --include="*.rb" --max-count=10
   N1_SUSPECTS=$((N1_SUSPECTS + 1))
 fi
 
 if grep -r "each do |" app/views --include="*.erb" > /dev/null 2>&1; then
   echo "⚠️  Found iteration in views (potential N+1 if accessing associations):"
-  grep -rn "each do |" app/views --include="*.erb" | head -5
+  grep -rn "each do |" app/views --include="*.erb" --max-count=10
   N1_SUSPECTS=$((N1_SUSPECTS + 1))
 fi
 
