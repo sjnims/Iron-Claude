@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/images/banner.svg" alt="Iron Claude Banner">
+</p>
+
 # Iron Claude
 
 > **Your AI-powered Rails 8 development team in a plugin**
