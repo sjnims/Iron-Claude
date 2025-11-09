@@ -30,7 +30,7 @@ echo ""
 TEMP_FILE=$(mktemp)
 
 # Check if scan succeeded (allow non-zero exit if we got output)
-if ! brakeman --format json --output "$TEMP_FILE" --quiet --no-pager 2>&1; then
+if ! brakeman --format json --output "$TEMP_FILE" --quiet --no-pager; then
   # Brakeman failed - check if we got any output
   if [ ! -s "$TEMP_FILE" ]; then
     echo "❌ Brakeman scan failed"
