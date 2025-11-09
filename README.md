@@ -23,7 +23,7 @@ Iron Claude is a comprehensive Claude Code plugin that embodies DHH's omakase ph
 claude plugin install iron-claude
 
 # Or install from source
-git clone https://github.com/yourusername/iron-claude.git
+git clone https://github.com/sjnims/Iron-Claude.git
 claude plugin install ./iron-claude
 ```
 
@@ -57,15 +57,19 @@ kamal deploy
 ## 🎨 The Four Personas
 
 ### 🎨 Product Manager
+
 UX validation, Hotwire patterns, accessibility, feature completeness
 
 ### 🚀 DevOps Engineer
+
 Kamal deployment, performance, N+1 detection, Solid Stack expertise
 
 ### 🧪 QA Tester
+
 TDD enforcement, 90%+ coverage, edge cases, fast test suite
 
 ### 🔒 Code Reviewer
+
 Security (OWASP Top 10), Rails conventions, omakase adherence
 
 ## 💪 The Omakase Stack
@@ -85,6 +89,7 @@ Iron Claude strictly enforces DHH's Rails 8 omakase:
 Contributions welcome! See [Contributing Guidelines](CONTRIBUTING.md).
 
 ### Wanted
+
 - Additional personas (Database Architect, UX Designer)
 - More Hotwire examples
 - Community skills

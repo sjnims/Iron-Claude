@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2025-11-08
 
 ### Added
+
 - **Four Specialized Personas**:
   - Product Manager: UX validation, Hotwire patterns, feature completeness
   - DevOps Engineer: Kamal deployment, Solid Stack expertise, performance analysis
@@ -55,6 +56,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Troubleshooting guide
 
 ### Philosophy
+
 Iron Claude embodies DHH's omakase philosophy: Convention over Configuration, Majestic Monolith, no PaaS required, database-backed simplicity, and developer happiness through compression of complexity.
 
-[1.0.0]: https://github.com/yourusername/iron-claude/releases/tag/v1.0.0
+[1.0.0]: https://github.com/sjnims/Iron-Claude/releases/tag/v1.0.0

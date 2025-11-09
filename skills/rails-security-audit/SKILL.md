@@ -17,17 +17,20 @@ This skill provides deep security expertise for Rails applications, combining au
 ## Progressive Disclosure Flow
 
 ### Level 1: Quick Scan (Automatic)
+
 - Run Brakeman static analysis
 - Run Bundle Audit for CVEs
 - Report critical issues only
 
 ### Level 2: Manual Review Checklist
+
 - Load security checklist.md
 - Review Strong Parameters usage
 - Check authorization implementation
 - Verify secrets management
 
 ### Level 3: Deep Dive (On Request)
+
 - Detailed code review by @code-reviewer persona
 - Custom vulnerability patterns
 - Security best practices recommendations
@@ -35,20 +38,25 @@ This skill provides deep security expertise for Rails applications, combining au
 ## Tools Available
 
 ### Brakeman Scanner
+
 ```bash
 ./scripts/brakeman.sh
 ```
+
 Automated Rails security scanner
 
 ### Security Checklist
+
 ```markdown
 checklist.md
 ```
+
 Comprehensive manual review checklist
 
 ## Integration
 
 This skill works with:
+
 - `/security-audit` command
 - `@code-reviewer` persona
 - Pre-deploy hooks
@@ -59,6 +67,7 @@ This skill works with:
 User request: "Review my authentication code for security issues"
 
 **Skill response**:
+
 1. Run Brakeman on authentication files
 2. Load and review against checklist
 3. Provide specific recommendations

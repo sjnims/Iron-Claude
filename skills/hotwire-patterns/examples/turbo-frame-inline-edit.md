@@ -9,6 +9,7 @@ User clicks "Edit" and form appears inline, submits without full page reload.
 ## Code
 
 ### View (index.html.erb)
+
 ```erb
 <% @articles.each do |article| %>
   <%= turbo_frame_tag dom_id(article) do %>
@@ -20,6 +21,7 @@ User clicks "Edit" and form appears inline, submits without full page reload.
 ```
 
 ### Edit View (edit.html.erb)
+
 ```erb
 <%= turbo_frame_tag dom_id(@article) do %>
   <%= form_with model: @article do |f| %>
@@ -32,6 +34,7 @@ User clicks "Edit" and form appears inline, submits without full page reload.
 ```
 
 ### Controller
+
 ```ruby
 def edit
   # Renders edit form inside turbo frame

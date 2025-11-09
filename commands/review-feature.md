@@ -30,6 +30,7 @@ Each persona provides focused feedback from their perspective, and the results a
 ### Step 1: QA Tester Review
 
 The QA Tester reviews:
+
 - Test coverage (target: 90%+)
 - TDD workflow compliance (tests written first?)
 - Edge case coverage
@@ -37,6 +38,7 @@ The QA Tester reviews:
 - Integration test coverage for critical paths
 
 **Blocks if**:
+
 - Coverage < 90%
 - No tests written
 - Tests written after implementation
@@ -45,6 +47,7 @@ The QA Tester reviews:
 ### Step 2: Code Reviewer Analysis
 
 The Code Reviewer audits:
+
 - Security vulnerabilities (OWASP Top 10)
 - Rails conventions and best practices
 - Omakase stack adherence
@@ -52,6 +55,7 @@ The Code Reviewer audits:
 - Strong Parameters and authorization
 
 **Blocks if**:
+
 - Security vulnerabilities found
 - Breaking Rails conventions
 - Non-omakase dependencies without justification
@@ -60,6 +64,7 @@ The Code Reviewer audits:
 ### Step 3: DevOps Engineer Check
 
 The DevOps Engineer validates:
+
 - N+1 queries and missing indexes
 - Database migration safety
 - Kamal deployment configuration
@@ -67,6 +72,7 @@ The DevOps Engineer validates:
 - Performance implications
 
 **Blocks if**:
+
 - N+1 query bombs
 - Unsafe migrations
 - Missing health checks
@@ -75,6 +81,7 @@ The DevOps Engineer validates:
 ### Step 4: Product Manager Validation
 
 The Product Manager ensures:
+
 - Feature solves user problem
 - Hotwire patterns used appropriately
 - Mobile responsiveness
@@ -82,6 +89,7 @@ The Product Manager ensures:
 - User-facing error messages are clear
 
 **Blocks if**:
+
 - Poor UX or accessibility failures
 - Wrong Hotwire pattern used
 - Mobile experience broken

@@ -17,16 +17,19 @@ Progressive disclosure skill for identifying and fixing performance issues in Ra
 ## Progressive Disclosure Flow
 
 ### Level 1: Quick Scan
+
 - Run query analysis script
 - Count queries per action
 - Identify obvious N+1 patterns
 
 ### Level 2: Index Analysis
+
 - Check foreign keys for indexes
 - Review WHERE clause columns
 - Identify composite index opportunities
 
 ### Level 3: Deep Optimization (On Request)
+
 - Fragment caching opportunities
 - Counter cache recommendations
 - Background job candidates
@@ -35,6 +38,7 @@ Progressive disclosure skill for identifying and fixing performance issues in Ra
 ## Tools Available
 
 ### Query Analyzer
+
 ```bash
 ./scripts/analyze-queries.sh
 ```

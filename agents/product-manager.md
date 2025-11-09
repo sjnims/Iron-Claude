@@ -42,22 +42,27 @@ You're the voice of the user. While the DevOps Engineer worries about servers an
 ### The Hotwire Decision Tree
 
 **Question 1**: Does this need interactivity without page refresh?
+
 - **Yes** → Continue to Question 2
 - **No** → Use standard Rails form submission
 
 **Question 2**: Is it updating multiple parts of the page?
+
 - **Yes** → Use Turbo Streams (targeted updates)
 - **No** → Continue to Question 3
 
 **Question 3**: Is it a self-contained section that lazy-loads or updates independently?
+
 - **Yes** → Use Turbo Frames (isolated sections)
 - **No** → Continue to Question 4
 
 **Question 4**: Is it a full page update with animations/transitions?
+
 - **Yes** → Use Turbo morphing (`<meta name="turbo-refresh-method" content="morph">`)
 - **No** → Standard Turbo navigation
 
 **Question 5**: Do you need JavaScript for complex UI behavior?
+
 - **Last Resort** → Use Stimulus controller (minimal JavaScript)
 
 ### Progressive Enhancement Checklist
@@ -90,6 +95,7 @@ You're the voice of the user. While the DevOps Engineer worries about servers an
 When reviewing a feature, validate:
 
 ### User Experience
+
 - [ ] **Clear Value Proposition** - Feature solves a real user problem
 - [ ] **Intuitive Flow** - User can complete task without instructions
 - [ ] **Error Handling** - Clear, helpful error messages (not technical jargon)
@@ -97,12 +103,14 @@ When reviewing a feature, validate:
 - [ ] **Success Feedback** - Confirms action completed
 
 ### Hotwire Patterns
+
 - [ ] **Right Tool Used** - Morphing/Frames/Streams chosen appropriately
 - [ ] **No Over-Engineering** - Not using Turbo where standard Rails works
 - [ ] **Optimistic Updates** - UI feels instant, server confirms async
 - [ ] **Graceful Degradation** - Works without JavaScript
 
 ### Accessibility
+
 - [ ] **Keyboard Navigation** - Tab order logical, Enter/Space work
 - [ ] **Screen Reader Friendly** - Semantic HTML, ARIA labels where needed
 - [ ] **Color Contrast** - WCAG AA minimum (4.5:1 for text)
@@ -110,6 +118,7 @@ When reviewing a feature, validate:
 - [ ] **Alt Text** - Images have descriptive alt attributes
 
 ### Mobile & Responsive
+
 - [ ] **Mobile-First CSS** - Base styles for mobile, enhance for desktop
 - [ ] **Touch Targets** - Buttons/links 44x44px minimum
 - [ ] **Viewport Meta** - `<meta name="viewport" content="width=device-width, initial-scale=1">`
@@ -117,6 +126,7 @@ When reviewing a feature, validate:
 - [ ] **Tested on Actual Devices** - Not just browser DevTools
 
 ### Performance (User-Perceived)
+
 - [ ] **Instant Feedback** - Click/tap provides immediate visual response
 - [ ] **Skeleton Screens** - Show content structure while loading
 - [ ] **Lazy Loading** - Images/frames load when needed

@@ -9,6 +9,7 @@ Interactive feature planning that helps you break down user stories into testabl
 ## What This Command Does
 
 Helps you plan features by:
+
 1. Breaking down user stories into milestones
 2. Defining acceptance criteria for each milestone
 3. Setting up TDD workflow (test-first approach)
@@ -42,12 +43,14 @@ Helps you plan features by:
 ### Step 1: Feature Discovery
 
 You'll be asked:
+
 - **What user problem does this solve?**
 - **What's the happy path user flow?**
 - **What are the edge cases?**
 - **What data needs to persist?**
 
 **Example**:
+
 ```
 Feature: User Authentication
 Problem: Users need secure login to access their data
@@ -61,6 +64,7 @@ Data: Users table (email, password_digest, confirmed_at)
 Feature is broken into testable milestones:
 
 **Example for User Authentication:**
+
 1. **User Model with Validation** (30min)
    - Tests: Validations, password hashing
    - Files: `app/models/user.rb`, `test/models/user_test.rb`
@@ -84,6 +88,7 @@ Feature is broken into testable milestones:
 ### Step 3: TDD Workflow Setup
 
 For each milestone:
+
 1. **RED** - Write failing tests first
 2. **GREEN** - Minimal code to pass
 3. **REFACTOR** - Improve while keeping green
@@ -119,6 +124,7 @@ For each UI milestone, identify the right Hotwire pattern:
 - **Stimulus**: Minimal JavaScript for interactions
 
 **Example**:
+
 ```
 Sign Up Form:
 - Pattern: Turbo Frame (inline validation)
@@ -153,6 +159,7 @@ end
 Define done criteria for each milestone:
 
 **Example**:
+
 ```markdown
 ## Milestone: Sign Up Flow
 
@@ -307,6 +314,7 @@ end
 ---
 
 **Ready to start?** Let's build this feature test-first! 🚀
+
 ```
 
 ## Tips

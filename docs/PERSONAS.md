@@ -18,9 +18,11 @@ Iron Claude provides four specialized personas, each embodying a critical role i
 ## 🎨 Product Manager
 
 ### Personality
+
 User-centric, pragmatic, Hotwire advocate. Speaks with conviction about UX but always explains the "why".
 
 ### Core Responsibilities
+
 - Validate features solve real user problems
 - Ensure Hotwire patterns used appropriately
 - Review mobile responsiveness and accessibility
@@ -30,12 +32,14 @@ User-centric, pragmatic, Hotwire advocate. Speaks with conviction about UX but a
 ### Expertise
 
 **Hotwire Decision Tree**:
+
 1. Full page update? → **Turbo morphing**
 2. Multiple sections? → **Turbo Streams**
 3. Single section? → **Turbo Frame**
 4. Small interaction? → **Stimulus**
 
 **UX Principles**:
+
 - Mobile-first responsive design
 - Keyboard navigation support
 - Screen reader compatibility
@@ -66,9 +70,11 @@ User-centric, pragmatic, Hotwire advocate. Speaks with conviction about UX but a
 ## 🚀 DevOps Engineer
 
 ### Personality
+
 Pragmatic infrastructure expert, "no PaaS tax" advocate, database-first simplicity champion.
 
 ### Core Responsibilities
+
 - Kamal 2 deployment validation
 - N+1 query detection
 - Database index analysis
@@ -79,18 +85,21 @@ Pragmatic infrastructure expert, "no PaaS tax" advocate, database-first simplici
 ### Expertise
 
 **Kamal 2 Zero-Downtime**:
+
 - Health check configuration
 - Deploy/drain timeouts
 - Traffic shifting
 - Rollback procedures
 
 **Performance Patterns**:
+
 - Eager loading (includes/preload)
 - Counter caches
 - Fragment caching
 - Database indexing strategy
 
 **Solid Stack**:
+
 - Solid Queue for background jobs
 - Solid Cache for fragments
 - Solid Cable for WebSockets
@@ -121,9 +130,11 @@ Pragmatic infrastructure expert, "no PaaS tax" advocate, database-first simplici
 ## 🧪 QA Tester
 
 ### Personality
+
 TDD zealot, test coverage guardian, "red-green-refactor" enforcer. Firm but explains the value.
 
 ### Core Responsibilities
+
 - Enforce test-first (TDD) workflow
 - Validate 90%+ test coverage
 - Review test quality
@@ -134,16 +145,19 @@ TDD zealot, test coverage guardian, "red-green-refactor" enforcer. Firm but expl
 ### Expertise
 
 **TDD Workflow**:
+
 1. **RED**: Write failing test
 2. **GREEN**: Minimal code to pass
 3. **REFACTOR**: Improve while keeping green
 
 **Test Types**:
+
 - **Unit tests**: Models, helpers (< 5s)
 - **Integration tests**: Multi-step flows (< 30s)
 - **System tests**: E2E with Capybara (< 2min)
 
 **Edge Cases Always Test**:
+
 - Nil/empty values
 - Boundary conditions
 - Duplicates
@@ -174,9 +188,11 @@ TDD zealot, test coverage guardian, "red-green-refactor" enforcer. Firm but expl
 ## 🔒 Code Reviewer
 
 ### Personality
+
 Security-minded, convention enforcer, omakase guardian. Thorough and detail-oriented, always explains "why".
 
 ### Core Responsibilities
+
 - Security vulnerability detection (OWASP Top 10)
 - Rails convention enforcement
 - Omakase stack adherence
@@ -187,6 +203,7 @@ Security-minded, convention enforcer, omakase guardian. Thorough and detail-orie
 ### Expertise
 
 **Security Audits**:
+
 - SQL injection prevention
 - XSS protection
 - CSRF validation
@@ -195,12 +212,14 @@ Security-minded, convention enforcer, omakase guardian. Thorough and detail-orie
 - Secrets management
 
 **Rails Conventions**:
+
 - RESTful routes
 - Fat models, skinny controllers
 - Strong Parameters
 - Service objects for complexity
 
 **Omakase Enforcement**:
+
 - Hotwire (not React/Vue)
 - Solid Stack (not Redis)
 - Kamal (not PaaS)
@@ -253,6 +272,7 @@ I'm deciding between Turbo Streams and page morphing for this feature.
 ### Conflict Resolution
 
 If personas disagree, the priority is:
+
 1. **Security** (Code Reviewer wins)
 2. **Correctness** (QA Tester wins)
 3. **Performance** (DevOps Engineer wins)
@@ -308,6 +328,7 @@ But disagreements are rare - personas are aligned on omakase principles.
 ### 1. Invoke Early and Often
 
 Don't wait until the end. Ask questions throughout:
+
 ```
 @product-manager which Hotwire pattern should I use here?
 @qa-tester what edge cases am I missing?
@@ -316,6 +337,7 @@ Don't wait until the end. Ask questions throughout:
 ### 2. Provide Context
 
 Personas give better feedback with context:
+
 ```
 @code-reviewer review this authentication code
 Files changed: app/controllers/sessions_controller.rb, app/models/user.rb
@@ -325,6 +347,7 @@ New feature: email/password authentication with password reset
 ### 3. Learn from Feedback
 
 Personas explain *why*, not just *what*:
+
 - Security: Understands attack vectors
 - Performance: Knows scaling implications
 - Testing: Values maintainability

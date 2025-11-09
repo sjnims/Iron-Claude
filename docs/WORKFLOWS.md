@@ -126,10 +126,12 @@ Write this test first, watch it fail (RED), then implement.
 A milestone is a **shippable, testable increment** of functionality (30min-2hr of work).
 
 **Good Milestone**:
+
 - ✅ "User Model with email validation" (30min)
 - ✅ "Sign-up form with Turbo Frame" (1hr)
 
 **Bad Milestone**:
+
 - ❌ "User authentication system" (too large, 8+ hrs)
 - ❌ "Fix stuff" (not specific)
 
@@ -148,6 +150,7 @@ A milestone is a **shippable, testable increment** of functionality (30min-2hr o
 ```
 
 **Output**:
+
 ```markdown
 ## Milestone: User Email Verification
 
@@ -191,11 +194,13 @@ kamal deploy
 ### Milestone Tracking
 
 **View current milestone**:
+
 ```bash
 cat .iron-claude/milestone.json
 ```
 
 **Update milestone status**:
+
 ```json
 {
   "milestones": [
@@ -217,6 +222,7 @@ cat .iron-claude/milestone.json
 ### Complete Feature Example: Articles CRUD
 
 #### Week Plan
+
 - **Monday**: Milestone 1-2 (Model + Controller)
 - **Tuesday**: Milestone 3-4 (Views + Hotwire)
 - **Wednesday**: Milestone 5 (Tests + Review)
@@ -225,6 +231,7 @@ cat .iron-claude/milestone.json
 #### Day 1: Monday - Backend
 
 **Morning** (Milestone 1: Article Model)
+
 ```
 1. /milestone-planning "Article model with validations"
 2. Write tests for validations
@@ -233,6 +240,7 @@ cat .iron-claude/milestone.json
 ```
 
 **Afternoon** (Milestone 2: Articles Controller)
+
 ```
 1. /milestone-planning "RESTful articles controller"
 2. Write controller tests
@@ -243,6 +251,7 @@ cat .iron-claude/milestone.json
 #### Day 2: Tuesday - Frontend
 
 **Morning** (Milestone 3: Basic Views)
+
 ```
 1. /milestone-planning "Articles index and show views"
 2. Write system tests
@@ -251,6 +260,7 @@ cat .iron-claude/milestone.json
 ```
 
 **Afternoon** (Milestone 4: Hotwire Enhancement)
+
 ```
 1. /milestone-planning "Turbo Frame inline editing"
 2. Update tests for Turbo behavior
@@ -261,6 +271,7 @@ cat .iron-claude/milestone.json
 #### Day 3: Wednesday - Quality
 
 **Morning** (Milestone 5: Edge Cases)
+
 ```
 1. Review test coverage
 2. Add missing edge case tests
@@ -269,6 +280,7 @@ cat .iron-claude/milestone.json
 ```
 
 **Afternoon** (Security + Performance)
+
 ```
 1. /security-audit
 2. /performance-check
@@ -279,6 +291,7 @@ cat .iron-claude/milestone.json
 #### Day 4: Thursday - Deployment
 
 **Morning** (Pre-Deploy)
+
 ```
 1. /pre-deploy
 2. Fix any blockers
@@ -286,6 +299,7 @@ cat .iron-claude/milestone.json
 ```
 
 **Afternoon** (Deploy)
+
 ```
 1. git push origin main
 2. kamal deploy
@@ -382,11 +396,13 @@ jobs:
 ### "TDD is slow!"
 
 **Reality**: TDD is faster long-term
+
 - Fewer bugs in production
 - Confident refactoring
 - Less debugging time
 
 **Tips**:
+
 - Keep tests fast (parallelize)
 - Use factories, not fixtures
 - Mock external services
@@ -394,6 +410,7 @@ jobs:
 ### "I forgot to write tests first"
 
 **Solution**: Hooks remind you!
+
 ```
 @qa-tester: TDD violation detected. Tests should be written first.
 Let's write the test now.
@@ -402,6 +419,7 @@ Let's write the test now.
 ### "Personas are too strict"
 
 **Customize**:
+
 ```json
 {
   "review": {

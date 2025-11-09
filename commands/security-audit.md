@@ -27,6 +27,7 @@ Comprehensive security audit combining automated vulnerability scanning with exp
 ### 1. Brakeman Static Analysis
 
 Scans for:
+
 - SQL Injection
 - Cross-Site Scripting (XSS)
 - Command Injection
@@ -40,6 +41,7 @@ Scans for:
 ### 2. Dependency Vulnerabilities
 
 Checks:
+
 - Known CVEs in gems
 - Outdated dependencies with security patches
 - Unmaintained gems with known issues
@@ -47,6 +49,7 @@ Checks:
 ### 3. Manual Code Review (@code-reviewer)
 
 Reviews:
+
 - Strong Parameters usage
 - Authorization checks
 - Authentication security (password hashing, session management)
@@ -96,17 +99,20 @@ end
 
 **Exploitation Risk**: HIGH
 An attacker could inject SQL to:
+
 - Extract all database data
 - Modify records
 - Drop tables
 - Bypass authentication
 
 **Example Attack**:
+
 ```
 ?q='; DROP TABLE users; --
 ```
 
 **Fix**:
+
 ```ruby
 def search
   @articles = Article.where("title LIKE ?", "%#{params[:q]}%")
@@ -119,11 +125,13 @@ end
 ---
 
 ### 2. Mass Assignment Vulnerability in UsersController
+
 **Severity**: CRITICAL
 **Location**: `app/controllers/users_controller.rb:18`
 **Detected By**: @code-reviewer
 
 **Vulnerable Code**:
+
 ```ruby
 def update
   @user = User.find(params[:id])
@@ -133,11 +141,13 @@ end
 
 **Exploitation Risk**: HIGH
 Attacker could:
+
 - Elevate privileges (set admin: true)
 - Modify other users' data
 - Bypass payment status
 
 **Fix**:
+
 ```ruby
 def update
   @user = User.find(params[:id])
@@ -159,22 +169,26 @@ end
 ## 🟠 HIGH Priority Issues (Fix Before Deploy)
 
 ### 3. XSS Vulnerability in Comments
+
 **Severity**: HIGH
 **Location**: `app/views/comments/_comment.html.erb:5`
 **Detected By**: Brakeman
 
 **Vulnerable Code**:
+
 ```erb
 <%= raw comment.body %>
 ```
 
 **Exploitation Risk**: MEDIUM-HIGH
 Attacker could:
+
 - Inject JavaScript to steal cookies
 - Redirect users to phishing sites
 - Deface the page
 
 **Fix**:
+
 ```erb
 <%= sanitize comment.body, tags: %w[p b i strong em], attributes: %w[href] %>
 ```
@@ -185,11 +199,13 @@ Attacker could:
 ---
 
 ### 4. Missing Authorization Check
+
 **Severity**: HIGH
 **Location**: `app/controllers/articles_controller.rb:28`
 **Detected By**: @code-reviewer
 
 **Vulnerable Code**:
+
 ```ruby
 def destroy
   @article = Article.find(params[:id])
@@ -199,6 +215,7 @@ end
 ```
 
 **Fix**:
+
 ```ruby
 def destroy
   @article = current_user.articles.find(params[:id])
@@ -221,6 +238,7 @@ end
 ## 🟡 MEDIUM Priority Issues (Should Fix Soon)
 
 ### 5. Insecure Session Configuration
+
 **Severity**: MEDIUM
 **Location**: `config/initializers/session_store.rb`
 **Detected By**: @code-reviewer
@@ -228,11 +246,13 @@ end
 **Issue**: Session timeout is 2 weeks, no secure flag
 
 **Current**:
+
 ```ruby
 Rails.application.config.session_store :cookie_store
 ```
 
 **Recommended**:
+
 ```ruby
 Rails.application.config.session_store :cookie_store,
   expire_after: 2.hours,
@@ -247,6 +267,7 @@ Rails.application.config.session_store :cookie_store,
 ---
 
 ### 6. No Rate Limiting
+
 **Severity**: MEDIUM
 **Location**: Authentication endpoints
 **Detected By**: @code-reviewer
@@ -254,6 +275,7 @@ Rails.application.config.session_store :cookie_store,
 **Issue**: Login endpoint vulnerable to brute force attacks
 
 **Fix**: Add Rack::Attack
+
 ```ruby
 # Gemfile
 gem 'rack-attack'
@@ -284,6 +306,7 @@ end
 ## 📊 Summary
 
 **Total Issues**: 6
+
 - 🔴 Critical: 2 (MUST FIX NOW)
 - 🟠 High: 2 (FIX BEFORE DEPLOY)
 - 🟡 Medium: 2 (FIX THIS WEEK)
@@ -300,15 +323,18 @@ end
 ## Action Plan
 
 ### Immediate (Next 30min)
+
 1. Fix SQL injection in ArticlesController#search (5min)
 2. Add Strong Parameters to UsersController (10min)
 3. Sanitize comment body HTML (15min)
 
 ### Before Deploy (Next 30min)
+
 4. Add authorization check to ArticlesController#destroy (10min)
 5. Review other controllers for missing authorization (20min)
 
 ### This Week
+
 6. Configure secure session settings (5min)
 7. Implement rate limiting with Rack::Attack (20min)
 8. Security team review (optional)
@@ -318,6 +344,7 @@ end
 ## Automated Scan Output
 
 ### Brakeman
+
 ```
 Brakeman 6.1.2
 Rails 8.0.0
@@ -333,6 +360,7 @@ Line: 42
 ```
 
 ### Bundle Audit
+
 ```
 Name: rack
 Version: 2.2.8
@@ -352,6 +380,7 @@ Solution: upgrade to ~> 2.2.9
 4. Schedule monthly security audits
 
 **Security is not optional. Fix these issues before deploying.**
+
 ```
 
 ## Configuration

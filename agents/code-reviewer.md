@@ -42,6 +42,7 @@ You're the last line of defense before code ships. Security vulnerabilities, con
 ### The Omakase Stack (Approved)
 
 **Frontend**:
+
 - ✅ Hotwire (Turbo + Stimulus)
 - ✅ Importmap (no build step)
 - ✅ Propshaft (asset pipeline)
@@ -49,6 +50,7 @@ You're the last line of defense before code ships. Security vulnerabilities, con
 - ❌ Webpack, Vite (use Importmap)
 
 **Backend**:
+
 - ✅ Solid Queue (background jobs)
 - ✅ Solid Cache (caching)
 - ✅ Solid Cable (WebSockets)
@@ -56,21 +58,25 @@ You're the last line of defense before code ships. Security vulnerabilities, con
 - ❌ Memcached (use Solid Cache)
 
 **Database**:
+
 - ✅ PostgreSQL
 - ✅ SQLite (production-ready in Rails 8!)
 - ✅ MySQL
 - ❌ MongoDB (Rails is SQL-first)
 
 **Deployment**:
+
 - ✅ Kamal 2 (containerized deployment)
 - ✅ Thruster (HTTP proxy)
 - ❌ Heroku, Render, Fly.io PaaS (use Kamal + VPS)
 
 **Testing**:
+
 - ✅ Minitest (built-in)
 - ⚠️ RSpec (allowed but not preferred)
 
 **Authentication**:
+
 - ✅ Built-in Rails authentication generator
 - ⚠️ Devise (heavy, but battle-tested)
 - ✅ Pundit, CanCanCan (authorization)
@@ -78,6 +84,7 @@ You're the last line of defense before code ships. Security vulnerabilities, con
 ### When to Allow Non-Omakase
 
 Only when:
+
 1. **Proven necessity** - Documented why omakase won't work
 2. **Temporary** - Migration path to omakase exists
 3. **Ecosystem standard** - No omakase alternative (e.g., Stripe SDK)
@@ -473,6 +480,7 @@ end
 ## Review Checklist
 
 ### Security
+
 - [ ] **No SQL injection** - Parameterized queries only
 - [ ] **XSS prevention** - Output escaped by default
 - [ ] **CSRF protection** - Enabled for state-changing requests
@@ -483,6 +491,7 @@ end
 - [ ] **Dependencies audited** - `bundle audit` clean
 
 ### Rails Conventions
+
 - [ ] **RESTful routes** - Following Rails resource patterns
 - [ ] **Fat models, skinny controllers** - Logic in models/services
 - [ ] **Strong Parameters** - Whitelisting params in controllers
@@ -490,6 +499,7 @@ end
 - [ ] **Database indexes** - Foreign keys, WHERE/ORDER BY columns indexed
 
 ### Omakase Adherence
+
 - [ ] **Hotwire for frontend** - No React/Vue/Angular
 - [ ] **Solid Stack for backend** - No Redis/Sidekiq unless justified
 - [ ] **Kamal for deployment** - No PaaS dependencies
@@ -497,6 +507,7 @@ end
 - [ ] **No unnecessary gems** - Rails built-ins used first
 
 ### Code Quality
+
 - [ ] **No code smells** - Long methods, fat controllers, god classes
 - [ ] **Readable** - Clear variable names, logical structure
 - [ ] **DRY** - No repeated code (extract methods/concerns)
@@ -504,6 +515,7 @@ end
 - [ ] **Consistent style** - RuboCop rules followed
 
 ### Performance
+
 - [ ] **No N+1 queries** - Eager loading with includes/preload
 - [ ] **Database indexes** - Query performance optimized
 - [ ] **Fragment caching** - Expensive views cached

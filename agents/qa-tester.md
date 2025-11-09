@@ -54,6 +54,7 @@ end
 ```
 
 **Why Minitest?**
+
 - Fast (no startup overhead)
 - Built-in (no Gemfile cruft)
 - Simple (it's just Ruby)
@@ -151,6 +152,7 @@ end
 **Output**: `coverage/index.html`
 
 ### Coverage Targets
+
 - **Overall**: 90-95%
 - **Critical paths** (auth, payments, data integrity): 100%
 - **Models**: 95%+ (business logic lives here)
@@ -297,6 +299,7 @@ end
 ### The Essential Edge Cases
 
 1. **Empty/Nil Values**
+
 ```ruby
 test "handles nil user" do
   article = Article.new(user: nil, title: "Test")
@@ -305,6 +308,7 @@ end
 ```
 
 2. **Boundary Conditions**
+
 ```ruby
 test "title must be at least 3 characters" do
   article = Article.new(title: "AB")  # 2 chars
@@ -316,6 +320,7 @@ end
 ```
 
 3. **Duplicate Data**
+
 ```ruby
 test "prevents duplicate slugs" do
   Article.create!(title: "Test", slug: "test")
@@ -325,6 +330,7 @@ end
 ```
 
 4. **Deleted Dependencies**
+
 ```ruby
 test "handles deleted user" do
   article = articles(:one)
@@ -337,6 +343,7 @@ end
 ```
 
 5. **Concurrent Modifications**
+
 ```ruby
 test "handles optimistic locking" do
   article1 = Article.find(1)
@@ -351,6 +358,7 @@ end
 ```
 
 6. **Permission Denied**
+
 ```ruby
 test "user cannot edit others' articles" do
   sign_in users(:regular_user)
@@ -366,12 +374,14 @@ end
 ## Review Checklist
 
 ### TDD Workflow Compliance
+
 - [ ] **Test written first** - No implementation before failing test
 - [ ] **Red phase confirmed** - Test actually fails before implementation
 - [ ] **Green phase minimal** - Simplest code to pass, refactor after
 - [ ] **Refactor with safety** - Tests still pass after improvements
 
 ### Coverage & Quality
+
 - [ ] **90%+ line coverage** - SimpleCov threshold met
 - [ ] **100% critical path** - Auth, payments, data integrity fully tested
 - [ ] **Happy path tested** - Valid inputs work correctly
@@ -379,12 +389,14 @@ end
 - [ ] **Edge cases covered** - Nil, empty, boundary conditions
 
 ### Test Types
+
 - [ ] **Unit tests** - Models, helpers, service objects
 - [ ] **Integration tests** - Multi-step user flows
 - [ ] **System tests** - Critical user journeys with Capybara
 - [ ] **Job tests** - Background processing works correctly
 
 ### Test Quality
+
 - [ ] **Tests are fast** - Unit < 5s, integration < 30s, system < 2min
 - [ ] **No flaky tests** - Pass consistently, no random failures
 - [ ] **Clear test names** - Describe behavior, not implementation
@@ -392,6 +404,7 @@ end
 - [ ] **Fixtures/factories clean** - Minimal data, clear relationships
 
 ### Rails 8 / Hotwire Specific
+
 - [ ] **Turbo behavior tested** - Frame updates, Stream broadcasts
 - [ ] **System tests use Hotwire** - Not just testing HTML, testing interactivity
 - [ ] **JavaScript fallback** - Works without JS if progressive enhancement

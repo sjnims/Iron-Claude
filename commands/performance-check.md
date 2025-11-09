@@ -28,12 +28,14 @@ Comprehensive performance analysis to identify N+1 queries, missing database ind
 ### 1. N+1 Query Detection
 
 Scans for:
+
 - Missing `includes`/`preload`/`eager_load`
 - Queries inside loops
 - Counter cache opportunities
 - Select N+1 (loading unnecessary columns)
 
 **How We Detect**:
+
 - Analyzes controller actions
 - Reviews view templates
 - Simulates request with query logging
@@ -42,6 +44,7 @@ Scans for:
 ### 2. Missing Database Indexes
 
 Checks for:
+
 - Foreign keys without indexes
 - WHERE clause columns without indexes
 - ORDER BY columns without indexes
@@ -51,6 +54,7 @@ Checks for:
 ### 3. Slow Endpoint Analysis
 
 Identifies:
+
 - Endpoints > 200ms (should be background jobs)
 - Endpoints > 100ms (caching candidates)
 - Endpoints with excessive queries
@@ -59,6 +63,7 @@ Identifies:
 ### 4. Caching Opportunities
 
 Reviews:
+
 - Fragment caching for expensive views
 - Solid Cache configuration
 - Russian Doll caching patterns
@@ -67,6 +72,7 @@ Reviews:
 ### 5. Background Job Candidates
 
 Finds operations that should be async:
+
 - Email sending (> 500ms)
 - External API calls
 - Report generation
@@ -112,6 +118,7 @@ end
 ```
 
 **View Template** (`app/views/articles/index.html.erb`):
+
 ```erb
 <% @articles.each do |article| %>
   <h2><%= article.title %></h2>
@@ -121,11 +128,13 @@ end
 ```
 
 **Performance Impact**:
+
 - 10 articles = 21 queries (1 + 10 + 10)
 - 100 articles = 201 queries
 - 1000 articles = 2001 queries 😱
 
 **Query Log**:
+
 ```sql
 Article Load (0.3ms)  SELECT "articles".* FROM "articles"
 User Load (0.2ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
@@ -136,6 +145,7 @@ User Load (0.2ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1 
 ```
 
 **Fix**:
+
 ```ruby
 def index
   @articles = Article.includes(:user).all  # Eager load user
@@ -155,6 +165,7 @@ add_column :articles, :comments_count, :integer, default: 0
 ```
 
 **Estimated Performance Gain**:
+
 - Before: 201 queries (100 articles)
 - After: 2 queries
 - **99% reduction in database queries** 🚀
@@ -165,6 +176,7 @@ add_column :articles, :comments_count, :integer, default: 0
 ---
 
 ### 2. Missing Index on Foreign Key
+
 **Severity**: CRITICAL
 **Impact**: Full table scan on articles table
 **Location**: `app/models/comment.rb`
@@ -172,16 +184,19 @@ add_column :articles, :comments_count, :integer, default: 0
 **Issue**: `comments.article_id` has no index
 
 **Query**:
+
 ```sql
 SELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?
 ```
 
 **Performance Impact**:
+
 - Without index: O(n) - scans all comments
 - With index: O(log n) - instant lookup
 - 10,000 comments: 150ms → 1.5ms (100x faster)
 
 **Fix**:
+
 ```ruby
 # Migration
 class AddIndexToCommentsArticleId < ActiveRecord::Migration[8.0]
@@ -200,11 +215,13 @@ end
 ## 🟠 HIGH Priority Issues
 
 ### 3. Slow Endpoint: ArticlesController#create
+
 **Response Time**: 1.2 seconds
 **Issue**: Synchronous email delivery
 **Location**: `app/controllers/articles_controller.rb:18`
 
 **Current Code**:
+
 ```ruby
 def create
   @article = current_user.articles.build(article_params)
@@ -217,11 +234,13 @@ end
 ```
 
 **Performance Impact**:
+
 - User waits 1.2s for page to load
 - Server thread blocked during email delivery
 - Poor perceived performance
 
 **Fix**:
+
 ```ruby
 def create
   @article = current_user.articles.build(article_params)
@@ -236,6 +255,7 @@ end
 ```
 
 **Estimated Performance Gain**:
+
 - Before: 1.2s response time
 - After: 50ms response time
 - **96% faster perceived performance** 🚀
@@ -246,11 +266,13 @@ end
 ---
 
 ### 4. Missing Composite Index
+
 **Severity**: HIGH
 **Impact**: Slow filtered queries
 **Location**: Articles filtered by user and published status
 
 **Query**:
+
 ```sql
 SELECT "articles".* FROM "articles"
 WHERE "articles"."user_id" = ? AND "articles"."published" = ?
@@ -258,16 +280,19 @@ ORDER BY "articles"."created_at" DESC
 ```
 
 **Current Indexes**:
+
 - `articles.user_id` ✅
 - `articles.published` ❌
 - `articles.created_at` ❌
 - Composite index ❌
 
 **Performance Impact**:
+
 - Using only `user_id` index, then filtering published in memory
 - Not using ORDER BY index
 
 **Fix**:
+
 ```ruby
 # Migration
 class AddCompositeIndexToArticles < ActiveRecord::Migration[8.0]
@@ -286,6 +311,7 @@ end
 ## 🟡 MEDIUM Priority Issues
 
 ### 5. Missing Fragment Caching
+
 **Severity**: MEDIUM
 **Impact**: Expensive view rendering
 **Location**: `app/views/articles/show.html.erb`
@@ -293,12 +319,14 @@ end
 **Issue**: Article view renders markdown and counts on every request
 
 **Current**:
+
 ```erb
 <%= markdown article.body %>  <!-- 50ms to render -->
 <%= render article.comments %>  <!-- 20ms with 10 comments -->
 ```
 
 **Fix** (Russian Doll Caching):
+
 ```erb
 <% cache article do %>
   <%= markdown article.body %>
@@ -310,6 +338,7 @@ end
 ```
 
 **Performance Impact**:
+
 - First request: 70ms (cache miss)
 - Subsequent requests: <1ms (cache hit)
 - With Solid Cache: survives deploys
@@ -321,6 +350,7 @@ end
 ---
 
 ### 6. Select N+1 (Loading Unused Columns)
+
 **Severity**: MEDIUM
 **Impact**: Transferring unnecessary data
 **Location**: `app/controllers/articles_controller.rb:6`
@@ -328,18 +358,21 @@ end
 **Issue**: Loading full `body` field (potentially large) when only showing title
 
 **Current**:
+
 ```ruby
 @articles = Article.includes(:user).all
 # Loads entire article record including large body field
 ```
 
 **Fix**:
+
 ```ruby
 @articles = Article.includes(:user).select(:id, :title, :user_id, :created_at)
 # Only loads needed columns
 ```
 
 **Performance Impact**:
+
 - Before: 500KB transferred (100 articles with large bodies)
 - After: 20KB transferred
 - **96% reduction in data transfer**
@@ -364,23 +397,27 @@ end
 ## 📊 Performance Metrics
 
 ### Query Analysis
+
 - **Total Controllers Analyzed**: 12
 - **N+1 Queries Found**: 3
 - **Average Queries per Action**: 4.2
 - **Max Queries in Single Action**: 21 (ArticlesController#index)
 
 ### Index Analysis
+
 - **Tables Analyzed**: 8
 - **Missing Foreign Key Indexes**: 2
 - **Missing Filter Indexes**: 4
 - **Composite Index Opportunities**: 3
 
 ### Endpoint Performance
+
 - **Fast (< 100ms)**: 18 endpoints ✅
 - **Acceptable (100-200ms)**: 5 endpoints ⚠️
 - **Slow (> 200ms)**: 2 endpoints ❌
 
 ### Caching
+
 - **Fragment Caching**: Used in 40% of views
 - **Russian Doll Pattern**: Used in 20% of views
 - **Solid Cache Hit Rate**: 85%
@@ -391,16 +428,19 @@ end
 ## 📋 Prioritized Action Plan
 
 ### P0 - Immediate (Next 30min)
+
 1. Fix N+1 in ArticlesController#index (15min)
 2. Add index to comments.article_id (2min)
 3. Add index to articles.user_id if missing (2min)
 
 ### P1 - Before Deploy (Next Hour)
+
 4. Move email delivery to background (2min)
 5. Add composite index for filtered queries (3min)
 6. Review other endpoints for N+1 (30min)
 
 ### P2 - This Week
+
 7. Add fragment caching to article views (10min)
 8. Implement Select N+1 fix (5min)
 9. Add counter caches where appropriate (20min)
@@ -413,6 +453,7 @@ end
 ## Optimization Recommendations (@devops-engineer)
 
 ### Database
+
 ```ruby
 # Add these indexes:
 add_index :comments, :article_id
@@ -425,6 +466,7 @@ add_column :users, :articles_count, :integer, default: 0
 ```
 
 ### Caching Strategy
+
 ```ruby
 # Solid Cache configuration
 config.cache_store = :solid_cache_store, {
@@ -440,6 +482,7 @@ config.cache_store = :solid_cache_store, {
 ```
 
 ### Background Jobs
+
 ```ruby
 # Move to Solid Queue:
 ArticleMailer.publication_notice(@article).deliver_later
@@ -458,6 +501,7 @@ ImageProcessingJob.perform_later(image_id)
 5. Add performance tests to catch regressions
 
 **Fast software is a feature. Slow software loses users.**
+
 ```
 
 ## Configuration

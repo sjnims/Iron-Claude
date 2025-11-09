@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "Rails 8 omakase development assistant with 4 specialized personas for catching blind spots, enforcing TDD, and embodying DHH's philosophy",
   "author": {
-    "name": "Iron Claude Contributors",
-    "url": "https://github.com/yourusername/iron-claude"
+    "name": "Steve Nims",
+    "url": "https://github.com/sjnims/Iron-Claude"
   },
-  "homepage": "https://github.com/yourusername/iron-claude",
-  "repository": "https://github.com/yourusername/iron-claude",
+  "homepage": "https://github.com/sjnims/Iron-Claude",
+  "repository": "https://github.com/sjnims/Iron-Claude",
   "license": "MIT",
   "keywords": [
     "rails",
@@ -32,9 +32,15 @@
     "personas",
     "deployment"
   ],
-  "agents": ["agents/"],
-  "commands": ["commands/"],
-  "skills": ["skills/"],
+  "agents": [
+    "agents/"
+  ],
+  "commands": [
+    "commands/"
+  ],
+  "skills": [
+    "skills/"
+  ],
   "hooks": "hooks/hooks.json",
   "mcpServers": ".mcp.json",
   "minClaudeCodeVersion": "1.0.0"

@@ -21,7 +21,7 @@ claude plugin install iron-claude
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/iron-claude.git
+git clone https://github.com/sjnims/Iron-Claude.git
 
 # Install the plugin
 claude plugin install ./iron-claude
@@ -77,6 +77,7 @@ You'll see Iron Claude load the milestone context (if any exists).
 ```
 
 **Iron Claude Response**:
+
 ```markdown
 # Milestone Plan: Articles CRUD
 
@@ -107,6 +108,7 @@ Let's start Milestone 1. I'll write the first test for the Article model.
 ```
 
 **Iron Claude (@qa-tester)**:
+
 ```markdown
 Perfect! Here's the test structure:
 
@@ -144,6 +146,7 @@ The tests failed as expected. Now I'll implement the Article model.
 ```
 
 **Iron Claude**:
+
 ```ruby
 # app/models/article.rb
 class Article < ApplicationRecord
@@ -186,6 +189,7 @@ Ready to move to Milestone 2!
 ### Step 6: Continue with Remaining Milestones
 
 Repeat the TDD cycle for controller and views:
+
 1. Write failing tests
 2. Implement to pass
 3. Review with `/review-feature`
@@ -197,6 +201,7 @@ Repeat the TDD cycle for controller and views:
 ```
 
 **Iron Claude** runs comprehensive checks:
+
 - ✅ All tests passing (coverage 94%)
 - ✅ Security: Brakeman clean
 - ✅ Performance: No N+1 queries
@@ -220,22 +225,26 @@ kamal deploy
 ### When Each Persona Activates
 
 **Product Manager** 🎨:
+
 - Feature planning
 - UX review
 - Hotwire pattern selection
 - Accessibility checks
 
 **QA Tester** 🧪:
+
 - When you start coding (enforces TDD)
 - Coverage validation
 - Edge case review
 
 **Code Reviewer** 🔒:
+
 - Security concerns
 - Convention violations
 - Pre-merge checks
 
 **DevOps Engineer** 🚀:
+
 - Pre-deployment
 - Performance issues
 - Infrastructure questions
@@ -290,12 +299,14 @@ ls -la hooks/scripts/
 ### Personas Not Responding
 
 Ensure you're invoking them correctly:
+
 ```
 @product-manager review this UX
 /review-feature
 ```
 
 Not:
+
 ```
 product-manager review this  # Missing @
 ```

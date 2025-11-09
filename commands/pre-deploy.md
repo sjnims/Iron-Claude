@@ -39,12 +39,14 @@ bundle exec rails test
 ```
 
 **Validates**:
+
 - [ ] All tests passing (0 failures, 0 errors)
 - [ ] Test coverage ≥ 90% (SimpleCov)
 - [ ] No skipped or pending tests
 - [ ] System tests for critical paths
 
 **Blocks if**:
+
 - Any test failures
 - Coverage < 90%
 - Critical paths untested
@@ -58,6 +60,7 @@ bundle audit check --update
 ```
 
 **Validates**:
+
 - [ ] No known security vulnerabilities
 - [ ] Dependencies up to date
 - [ ] Strong Parameters implemented
@@ -66,6 +69,7 @@ bundle audit check --update
 - [ ] Authorization checks present
 
 **Blocks if**:
+
 - High/critical Brakeman warnings
 - Known CVEs in dependencies
 - Missing authorization
@@ -81,6 +85,7 @@ bundle audit check --update
 ```
 
 **Validates**:
+
 - [ ] No N+1 query bombs
 - [ ] Database indexes for foreign keys
 - [ ] Indexes for WHERE/ORDER BY columns
@@ -88,6 +93,7 @@ bundle audit check --update
 - [ ] Background jobs for slow operations
 
 **Blocks if**:
+
 - Critical N+1 queries detected
 - Missing indexes on high-traffic queries
 
@@ -98,6 +104,7 @@ bundle audit check --update
 ```
 
 **Checks**:
+
 - [ ] Service name and image defined
 - [ ] Server hosts configured
 - [ ] Health check path set (e.g., `/up`)
@@ -108,6 +115,7 @@ bundle audit check --update
 - [ ] Environment variables complete
 
 **Blocks if**:
+
 - No health check configured
 - Missing required environment variables
 - Invalid deploy configuration
@@ -120,6 +128,7 @@ bundle exec rails db:migrate:status
 ```
 
 **Validates**:
+
 - [ ] Migrations are reversible
 - [ ] No destructive operations without safety measures
 - [ ] No `remove_column` without coordination
@@ -127,6 +136,7 @@ bundle exec rails db:migrate:status
 - [ ] Migration tested on production-like data
 
 **Blocks if**:
+
 - Irreversible migrations
 - Potential data loss without confirmation
 - Table locks on large tables
@@ -139,6 +149,7 @@ curl http://localhost:3000/up
 ```
 
 **Validates**:
+
 - [ ] Health check responds < 1 second
 - [ ] Returns 200 for healthy state
 - [ ] Validates database connection
@@ -146,6 +157,7 @@ curl http://localhost:3000/up
 - [ ] Verifies cache availability
 
 **Blocks if**:
+
 - Health check missing or broken
 - Response time > 1 second
 - Doesn't check critical services
@@ -153,6 +165,7 @@ curl http://localhost:3000/up
 ### 7. Solid Stack Configuration (@devops-engineer)
 
 **Validates**:
+
 - [ ] Solid Queue configured for job types
 - [ ] Solid Cache sized appropriately
 - [ ] Solid Cable set up for WebSockets
@@ -160,6 +173,7 @@ curl http://localhost:3000/up
 - [ ] Worker processes defined
 
 **Warns if**:
+
 - Shared database might need performance tuning
 - Cache size might be insufficient
 
@@ -171,23 +185,27 @@ RAILS_ENV=production bundle exec rails assets:precompile
 ```
 
 **Validates**:
+
 - [ ] Assets compile without errors
 - [ ] Propshaft configuration correct
 - [ ] Importmap dependencies resolved
 - [ ] CSS and JS bundles generated
 
 **Blocks if**:
+
 - Asset compilation fails
 
 ### 9. Rollback Plan (@devops-engineer)
 
 **Validates**:
+
 - [ ] Previous deployment version recorded
 - [ ] Rollback command documented
 - [ ] Database rollback strategy defined
 - [ ] Monitoring and alerts configured
 
 **Warns if**:
+
 - No documented rollback procedure
 
 ## Example Usage
@@ -312,6 +330,7 @@ kamal rollback
 ## Post-Deployment Checklist
 
 After deployment, verify:
+
 - [ ] Health check returns 200
 - [ ] Critical user flows work
 - [ ] Database migrations applied
@@ -322,6 +341,7 @@ After deployment, verify:
 ---
 
 **Ready to deploy?** Run `kamal deploy` 🚢
+
 ```
 
 ## When Deployment is Blocked

@@ -42,6 +42,7 @@ You're the pragmatic engineer who keeps the app running smoothly in production. 
 ### The Three Solids
 
 **Solid Queue** - Database-backed background jobs
+
 ```yaml
 # config/queue.yml
 production:
@@ -52,6 +53,7 @@ production:
 ```
 
 **Solid Cache** - Database-backed caching
+
 ```yaml
 # config/cache.yml
 production:
@@ -62,6 +64,7 @@ production:
 ```
 
 **Solid Cable** - Database-backed WebSockets
+
 ```yaml
 # config/cable.yml
 production:
@@ -174,6 +177,7 @@ end
 ```
 
 **Health check must**:
+
 - Respond in < 1 second
 - Return 200 for healthy, 503 for unhealthy
 - Check database connection
@@ -249,6 +253,7 @@ add_index :articles, [:user_id, :published, :created_at]
 ```
 
 **Benefits with Solid Cache**:
+
 - Survives deploys (disk-backed)
 - No memory pressure
 - Automatic expiration via TTL
@@ -286,6 +291,7 @@ end
 ## Review Checklist
 
 ### Deployment Readiness
+
 - [ ] **Kamal config complete** - Service, image, servers defined
 - [ ] **Health check functional** - `/up` responds quickly
 - [ ] **Secrets configured** - `.kamal/secrets` has all required vars
@@ -294,24 +300,28 @@ end
 - [ ] **Database migrations reversible** - Can rollback safely
 
 ### Database & Queries
+
 - [ ] **No N+1 queries** - Use `includes`, `preload`, or counter caches
 - [ ] **Indexes present** - Foreign keys, WHERE, ORDER BY columns
 - [ ] **Migrations safe** - No `remove_column` without deploy coordination
 - [ ] **Connection pooling** - Pool size matches server threads
 
 ### Solid Stack Configuration
+
 - [ ] **Solid Queue configured** - Workers defined for job types
 - [ ] **Solid Cache sized** - Appropriate max_size for disk space
 - [ ] **Solid Cable setup** - For WebSocket features
 - [ ] **Database separate or shared** - Decision documented
 
 ### Performance
+
 - [ ] **Slow endpoints identified** - > 200ms without async processing
 - [ ] **Fragment caching used** - For expensive views
 - [ ] **Background jobs queued** - For > 500ms operations
 - [ ] **Asset precompilation works** - `rails assets:precompile` succeeds
 
 ### Monitoring & Observability
+
 - [ ] **Logs configured** - JSON format for parsing
 - [ ] **Error tracking** - Sentry/Honeybadger (optional but recommended)
 - [ ] **APM considered** - AppSignal/Skylight for complex apps

@@ -17,10 +17,12 @@ Progressive disclosure skill providing Hotwire pattern recommendations and examp
 ## Decision Tree
 
 ### Step 1: Does it need interactivity without page refresh?
+
 - **No** → Standard Rails form/link
 - **Yes** → Continue to Step 2
 
 ### Step 2: How much of the page updates?
+
 - **Full page** → Turbo morphing
 - **Multiple sections** → Turbo Streams
 - **Single section** → Turbo Frame
@@ -29,23 +31,29 @@ Progressive disclosure skill providing Hotwire pattern recommendations and examp
 ## Pattern Library
 
 ### Turbo Drive (Default)
+
 Standard navigation with automatic AJAX
 
 ### Turbo Frames
+
 Lazy-loaded sections, inline editing
 
 ### Turbo Streams
+
 Real-time updates, multiple targets
 
 ### Page Morphing
+
 Smooth full-page updates
 
 ### Stimulus
+
 Minimal JavaScript for interactions
 
 ## Examples
 
 See `examples/` directory for:
+
 - Inline editing (Turbo Frame)
 - Real-time notifications (Turbo Stream)
 - Infinite scroll (Stimulus + Turbo Frame)

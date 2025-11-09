@@ -84,7 +84,7 @@ Each with distinct expertise and DHH-inspired personality:
 claude plugin install iron-claude
 
 # Or clone and install locally
-git clone https://github.com/yourusername/iron-claude.git
+git clone https://github.com/sjnims/Iron-Claude.git
 claude plugin install ./iron-claude
 ```
 
@@ -137,27 +137,32 @@ Iron Claude strictly adheres to **DHH's omakase stack** for Rails 8:
 ### ✅ The Omakase Stack
 
 **Frontend**:
+
 - Hotwire (Turbo 8 + Stimulus)
 - Importmap (#NOBUILD)
 - Propshaft (asset pipeline)
 - ❌ No React/Vue/Angular
 
 **Backend**:
+
 - Solid Queue (background jobs)
 - Solid Cache (caching)
 - Solid Cable (WebSockets)
 - ❌ No Redis/Sidekiq
 
 **Database**:
+
 - PostgreSQL or SQLite
 - Database-backed everything
 
 **Deployment**:
+
 - Kamal 2 (zero-downtime)
 - Thruster (HTTP proxy)
 - ❌ No PaaS tax
 
 **Testing**:
+
 - Minitest (TDD workflow)
 - 90%+ coverage target
 
@@ -225,9 +230,11 @@ Skills reveal information as needed:
 ## 🎨 Persona Deep Dive
 
 ### 🎨 Product Manager
+
 **Voice**: User-centric, "it just works" philosophy
 
 **Focus**:
+
 - Hotwire pattern selection (morphing vs frames vs streams)
 - Mobile responsiveness and accessibility
 - Progressive enhancement
@@ -237,9 +244,11 @@ Skills reveal information as needed:
 > "This works, but we can do better. Users shouldn't have to click 'Refresh' to see updates - that's what Turbo Streams were invented for."
 
 ### 🚀 DevOps Engineer
+
 **Voice**: Pragmatic, "no PaaS tax" advocate
 
 **Focus**:
+
 - Kamal 2 deployment configuration
 - N+1 query detection
 - Solid Stack expertise (Queue/Cache/Cable)
@@ -249,9 +258,11 @@ Skills reveal information as needed:
 > "Before we add Redis, let's see if Solid Cache handles this. I've seen it work for apps with 10x your traffic."
 
 ### 🧪 QA Tester
+
 **Voice**: TDD zealot, "red-green-refactor" enforcer
 
 **Focus**:
+
 - Test-first discipline
 - 90%+ coverage enforcement
 - Edge case identification
@@ -261,9 +272,11 @@ Skills reveal information as needed:
 > "I see we're implementing the feature. Where's the failing test? TDD means test-FIRST."
 
 ### 🔒 Code Reviewer
+
 **Voice**: Security-minded, convention enforcer
 
 **Focus**:
+
 - OWASP Top 10 vulnerabilities
 - Rails conventions (RESTful routes, Strong Parameters)
 - Omakase adherence
@@ -332,12 +345,14 @@ MIT License - see [LICENSE](../LICENSE)
 ## 🙏 Credits
 
 **Created with**:
+
 - Rails 8 omakase philosophy by [@dhh](https://github.com/dhh)
 - Claude Code by [Anthropic](https://www.anthropic.com)
 - Hotwire by [37signals](https://hotwired.dev)
 - Kamal by [37signals](https://kamal-deploy.org)
 
 **Inspired by**:
+
 - The Rails Doctrine
 - The Majestic Monolith
 - Test-Driven Development
@@ -347,9 +362,9 @@ MIT License - see [LICENSE](../LICENSE)
 
 ## 💬 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/iron-claude/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/iron-claude/discussions)
-- **Security**: security@iron-claude.dev (for vulnerabilities only)
+- **Issues**: [GitHub Issues](https://github.com/sjnims/Iron-Claude/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/sjnims/Iron-Claude/discussions)
+- **Security**: <sjnims@gmail.com> (for vulnerabilities only)
 
 ---
 
