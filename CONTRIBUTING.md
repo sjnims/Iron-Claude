@@ -45,6 +45,7 @@ We are committed to providing a welcoming and inclusive experience for everyone.
 - [Claude Code](https://claude.com/claude-code) installed
 - Basic understanding of Claude Code plugins
 - Familiarity with Rails 8 omakase stack
+- [ShellCheck](https://www.shellcheck.net/) for shell script linting (optional but recommended)
 
 ### Installing for Development
 
@@ -54,6 +55,29 @@ claude plugin install .
 
 # Test the installation
 claude plugin list
+```
+
+### Installing ShellCheck
+
+ShellCheck automatically lints shell scripts during development:
+
+```bash
+# macOS
+brew install shellcheck
+
+# Ubuntu/Debian
+sudo apt-get install shellcheck
+
+# Fedora
+sudo dnf install shellcheck
+```
+
+**Automatic Linting**: When you edit `.sh` files, ShellCheck runs automatically via hooks.
+
+**Manual Linting**: To lint all shell scripts at once:
+
+```bash
+./scripts/lint-shell.sh
 ```
 
 ### Testing Your Changes
@@ -114,6 +138,7 @@ We follow a standard GitHub workflow:
 - [ ] Documentation is updated
 - [ ] PR description is clear and complete
 - [ ] All tests pass (if applicable)
+- [ ] Shell scripts pass ShellCheck (run `./scripts/lint-shell.sh`)
 - [ ] No breaking changes (or clearly documented)
 
 ## Testing Requirements
@@ -129,6 +154,12 @@ We follow a standard GitHub workflow:
 - **Integration testing** - Verify the command works end-to-end
 - **Error handling** - Test with invalid inputs
 - **Output validation** - Ensure clear, helpful output
+
+### For Shell Scripts
+
+- **ShellCheck validation** - All scripts must pass ShellCheck
+- **Manual testing** - Test scripts in relevant environments
+- **Error handling** - Validate input parameters and fail gracefully
 
 ### Philosophy
 
