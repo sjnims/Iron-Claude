@@ -29,10 +29,10 @@
 
   <!-- Subtitle -->
   <text x="400" y="125" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#E0E7FF" text-anchor="middle" opacity="0.95">
-    Rails 8 Omakase Development | Your AI-Powered Team in a Plugin
+    Your AI-Powered Rails 8 Omakase Dev Team in a Claude Code Plugin
   </text>
 
-  <!-- Decorative code brackets -->
-  <text x="120" y="95" font-family="monospace" font-size="64" fill="#A5B4FC" opacity="0.3" font-weight="bold">{</text>
-  <text x="660" y="95" font-family="monospace" font-size="64" fill="#A5B4FC" opacity="0.3" font-weight="bold">}</text>
+  <!-- Decorative Rails view brackets -->
+  <text x="100" y="95" font-family="monospace" font-size="64" fill="#A5B4FC" opacity="0.3" font-weight="bold" text-anchor="start">&lt;%=</text>
+  <text x="700" y="95" font-family="monospace" font-size="64" fill="#A5B4FC" opacity="0.3" font-weight="bold" text-anchor="end">%&gt;</text>
 </svg>

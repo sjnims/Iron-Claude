@@ -4,7 +4,7 @@
 
 # Iron Claude
 
-> **Your AI-powered Rails 8 development team in a plugin**
+> **Your AI-Powered Rails 8 Omakase Dev Team in a Claude Code Plugin**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Rails](https://img.shields.io/badge/Rails-8.0-red.svg)](https://rubyonrails.org)

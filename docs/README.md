@@ -4,7 +4,7 @@
 
 # Iron Claude
 
-> **Your AI-powered Rails 8 development team in a plugin**
+> **Your AI-Powered Rails 8 Omakase Dev Team in a Claude Code Plugin**
 
 Iron Claude is a comprehensive Claude Code plugin that embodies DHH's omakase philosophy, providing four specialized personas that catch blind spots, enforce TDD workflows, and help solo developers ship production-ready Rails 8 applications with confidence.
 
