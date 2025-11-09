@@ -1,0 +1,149 @@
+---
+name: Plugin Validation
+
+'on':
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate Plugin Configuration
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate JSON files
+        run: |
+          echo "🔍 Validating JSON files..."
+          json_files=$(find . -name "*.json" \
+            -not -path "*/node_modules/*" \
+            -not -path "*/.git/*")
+
+          if [ -z "$json_files" ]; then
+            echo "⚠️  No JSON files found"
+            exit 0
+          fi
+
+          failed=0
+          while IFS= read -r file; do
+            echo "Checking $file"
+            if ! jq empty "$file" 2>/dev/null; then
+              echo "❌ Invalid JSON: $file"
+              failed=1
+            else
+              echo "✅ Valid: $file"
+            fi
+          done <<< "$json_files"
+
+          if [ $failed -eq 1 ]; then
+            echo "❌ JSON validation failed"
+            exit 1
+          fi
+
+          echo "✅ All JSON files are valid"
+
+      - name: Validate shell scripts with shellcheck
+        run: |
+          echo "🔍 Installing shellcheck..."
+          sudo apt-get update -qq
+          sudo apt-get install -y shellcheck
+
+          echo "🔍 Validating shell scripts..."
+          shell_scripts=$(find . -name "*.sh" \
+            -not -path "*/node_modules/*" \
+            -not -path "*/.git/*")
+
+          if [ -z "$shell_scripts" ]; then
+            echo "⚠️  No shell scripts found"
+            exit 0
+          fi
+
+          failed=0
+          while IFS= read -r script; do
+            echo "Checking $script"
+            if ! shellcheck "$script"; then
+              echo "❌ Shellcheck failed: $script"
+              failed=1
+            else
+              echo "✅ Valid: $script"
+            fi
+          done <<< "$shell_scripts"
+
+          if [ $failed -eq 1 ]; then
+            echo "❌ Shell script validation failed"
+            exit 1
+          fi
+
+          echo "✅ All shell scripts passed shellcheck"
+
+      - name: Check markdown links
+        run: |
+          echo "🔍 Installing markdown-link-check..."
+          npm install -g markdown-link-check
+
+          echo "🔍 Checking markdown links..."
+          md_files=$(find . -name "*.md" \
+            -not -path "*/node_modules/*" \
+            -not -path "*/.git/*")
+
+          if [ -z "$md_files" ]; then
+            echo "⚠️  No markdown files found"
+            exit 0
+          fi
+
+          while IFS= read -r file; do
+            echo "Checking links in $file"
+            if ! markdown-link-check "$file" --quiet 2>/dev/null; then
+              echo "⚠️  Some links may be broken in $file (non-blocking)"
+              # Don't fail the build for link checking - just warn
+            else
+              echo "✅ Links OK: $file"
+            fi
+          done <<< "$md_files"
+
+          echo "✅ Markdown link check complete"
+
+      - name: Validate plugin structure
+        run: |
+          echo "🔍 Validating plugin directory structure..."
+
+          # Check for required files
+          required_files=(
+            ".claude-plugin/plugin.json"
+            "README.md"
+            "LICENSE"
+          )
+
+          missing=0
+          for file in "${required_files[@]}"; do
+            if [ -f "$file" ]; then
+              echo "✅ Found: $file"
+            else
+              echo "❌ Missing: $file"
+              missing=1
+            fi
+          done
+
+          if [ $missing -eq 1 ]; then
+            echo "❌ Plugin structure validation failed"
+            exit 1
+          fi
+
+          echo "✅ Plugin structure is valid"
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "📊 Validation Summary"
+          echo "===================="
+          echo "✅ Plugin validation workflow completed"
+          echo ""
+          echo "Validated:"
+          echo "  - JSON syntax and structure"
+          echo "  - Shell script quality (shellcheck)"
+          echo "  - Markdown link integrity"
+          echo "  - Plugin directory structure"

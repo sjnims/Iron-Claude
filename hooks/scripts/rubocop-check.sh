@@ -24,10 +24,9 @@ fi
 
 # Run RuboCop with auto-correct
 echo "🔧 Auto-formatting with RuboCop..."
-rubocop --auto-correct "$FILE_PATH" 2>&1
 
 # Check result
-if [ $? -eq 0 ]; then
+if rubocop --auto-correct "$FILE_PATH"; then
   echo "✅ RuboCop: No issues found"
 else
   echo "⚠️  RuboCop found issues that couldn't be auto-corrected"
