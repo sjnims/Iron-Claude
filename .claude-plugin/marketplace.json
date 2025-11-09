@@ -2,7 +2,8 @@
   "name": "iron-claude-marketplace",
   "owner": {
     "name": "Steve Nims",
-    "email": "sjnims@gmail.com"
+    "email": "sjnims@gmail.com",
+    "url": "https://github.com/sjnims/Iron-Claude"
   },
   "metadata": {
     "description": "Rails 8 omakase development plugin marketplace",
