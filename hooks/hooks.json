@@ -17,7 +17,7 @@
           {
             "type": "prompt",
             "prompt": "Before ending this session, review milestone completion status:\n\n**Current Milestone**: ${MILESTONE:-No milestone set}\n\n**Validation Checklist**:\n\n1. **TDD Workflow** (@qa-tester perspective):\n   - Were tests written BEFORE implementation?\n   - Is test coverage ≥90%?\n   - Are edge cases covered?\n\n2. **UX & Hotwire** (@product-manager perspective):\n   - Does the feature solve the user problem?\n   - Are Hotwire patterns used correctly?\n   - Is it mobile-responsive and accessible?\n\n3. **Security & Conventions** (@code-reviewer perspective):\n   - Are there any security vulnerabilities?\n   - Are Rails conventions followed?\n   - Is the omakase stack adhered to?\n\n4. **Performance & Deployment** (@devops-engineer perspective):\n   - Are there N+1 queries or missing indexes?\n   - Is the health check functional?\n   - Are database migrations reversible?\n\n**Instructions**: If ANY criteria are incomplete or questionable, you MUST block this session from ending and ask the user to address the issues. Use `\"decision\": \"block\"` with a clear explanation of what's missing.\n\nIf all criteria are met, approve with `\"decision\": \"approve\"`.\n\nRespond in JSON format:\n```json\n{\n  \"decision\": \"approve\" or \"block\",\n  \"reason\": \"Detailed explanation\",\n  \"missingItems\": [\"List of incomplete items if blocking\"],\n  \"continue\": false\n}\n```",
-            "timeout": 45
+            "timeout": 60
           }
         ]
       }
