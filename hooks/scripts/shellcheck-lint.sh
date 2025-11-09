@@ -1,5 +1,5 @@
 #!/bin/bash
-# Auto-lint shell scripts with ShellCheck
+# Lint shell scripts with ShellCheck
 
 # Add validation
 FILE_PATH="${1:-}"
@@ -18,7 +18,7 @@ fi
 # Check if ShellCheck is available
 if ! command -v shellcheck &> /dev/null; then
   echo "⚠️  ShellCheck not found. Skipping linting."
-  echo "   Install with: brew install shellcheck (macOS) or apt-get install shellcheck (Linux)"
+  echo "   Install with: brew install shellcheck (macOS) or sudo apt-get install shellcheck (Linux)"
   exit 0
 fi
 
