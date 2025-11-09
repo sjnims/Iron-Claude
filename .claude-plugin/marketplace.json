@@ -1,0 +1,52 @@
+{
+  "name": "iron-claude-marketplace",
+  "owner": {
+    "name": "Steve Nims",
+    "url": "https://github.com/sjnims"
+  },
+  "metadata": {
+    "description": "Rails 8 omakase development plugin marketplace",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "iron-claude",
+      "source": {
+        "source": "github",
+        "repo": "sjnims/Iron-Claude"
+      },
+      "description": "Rails 8 omakase development assistant with 4 specialized personas for catching blind spots, enforcing TDD, and embodying DHH's philosophy",
+      "version": "1.0.0",
+      "author": {
+        "name": "Steve Nims",
+        "url": "https://github.com/sjnims/Iron-Claude"
+      },
+      "homepage": "https://github.com/sjnims/Iron-Claude",
+      "repository": "https://github.com/sjnims/Iron-Claude",
+      "license": "MIT",
+      "keywords": [
+        "rails",
+        "rails8",
+        "hotwire",
+        "turbo",
+        "stimulus",
+        "kamal",
+        "solid-queue",
+        "solid-cache",
+        "solid-cable",
+        "tdd",
+        "testing",
+        "minitest",
+        "omakase",
+        "dhh",
+        "majestic-monolith",
+        "solopreneur",
+        "security",
+        "performance",
+        "code-review",
+        "personas",
+        "deployment"
+      ]
+    }
+  ]
+}
