@@ -46,8 +46,8 @@ Or use the direct marketplace URL:
 For development or testing:
 
 ```bash
-git clone https://github.com/sjnims/Iron-Claude.git
-/plugin install ./Iron-Claude
+git clone https://github.com/sjnims/Iron-Claude.git iron-claude
+/plugin install ./iron-claude
 ```
 
 ### First Feature
