@@ -37,7 +37,7 @@ while IFS= read -r script; do
   total=$((total + 1))
   echo "Checking $script"
   if ! shellcheck "$script"; then
-    echo "❌ Shellcheck failed: $script"
+    # ShellCheck already printed detailed error output
     failed=$((failed + 1))
   else
     echo "✅ Valid: $script"

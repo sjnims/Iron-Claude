@@ -34,9 +34,7 @@ echo "🔍 Linting with ShellCheck..."
 # Check result
 if shellcheck "$FILE_PATH"; then
   echo "✅ ShellCheck: No issues found"
-else
-  echo "⚠️  ShellCheck found issues in $FILE_PATH"
-  echo "   Fix issues before committing"
 fi
+# ShellCheck already printed detailed error output if issues were found
 
 exit 0  # Don't block even if there are issues
