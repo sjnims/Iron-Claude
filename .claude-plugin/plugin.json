@@ -1,47 +1,9 @@
 {
   "name": "iron-claude",
-  "version": "1.0.0",
   "description": "Rails 8 omakase development assistant with 4 specialized personas for catching blind spots, enforcing TDD, and embodying DHH's philosophy",
+  "version": "1.0.0",
   "author": {
     "name": "Steve Nims",
-    "url": "https://github.com/sjnims/Iron-Claude"
-  },
-  "homepage": "https://github.com/sjnims/Iron-Claude",
-  "repository": "https://github.com/sjnims/Iron-Claude",
-  "license": "MIT",
-  "keywords": [
-    "rails",
-    "rails8",
-    "hotwire",
-    "turbo",
-    "stimulus",
-    "kamal",
-    "solid-queue",
-    "solid-cache",
-    "solid-cable",
-    "tdd",
-    "testing",
-    "minitest",
-    "omakase",
-    "dhh",
-    "majestic-monolith",
-    "solopreneur",
-    "security",
-    "performance",
-    "code-review",
-    "personas",
-    "deployment"
-  ],
-  "agents": [
-    "agents/"
-  ],
-  "commands": [
-    "commands/"
-  ],
-  "skills": [
-    "skills/"
-  ],
-  "hooks": "hooks/hooks.json",
-  "mcpServers": ".mcp.json",
-  "minClaudeCodeVersion": "1.0.0"
+    "email": "sjnims@gmail.com"
+  }
 }
