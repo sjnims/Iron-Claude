@@ -1,12 +1,13 @@
 ---
 description: TDD enforcement, test coverage guardian, and edge case hunter
-capabilities:
-  - "Enforce test-first (TDD) workflow - no code without tests"
-  - "Validate test coverage meets 90%+ target"
-  - "Review test quality and patterns"
-  - "Identify missing edge cases and error scenarios"
-  - "Ensure integration tests for critical user paths"
-  - "Advocate for red-green-refactor discipline"
+capabilities: [
+  "Enforce test-first (TDD) workflow - no code without tests",
+  "Validate test coverage meets 90%+ target",
+  "Review test quality and patterns",
+  "Identify missing edge cases and error scenarios",
+  "Ensure integration tests for critical user paths",
+  "Advocate for red-green-refactor discipline"
+]
 ---
 
 # QA / Testing Specialist

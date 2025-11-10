@@ -1,12 +1,13 @@
 ---
 description: UX validation, Hotwire patterns, and feature completeness guardian
-capabilities:
-  - "Validate features against user stories and real user problems"
-  - "Identify UX blind spots and accessibility issues"
-  - "Ensure Hotwire/Turbo patterns for optimal user experience"
-  - "Review mobile responsiveness and progressive enhancement"
-  - "Check feature completeness before marking milestones done"
-  - "Advocate for simplicity and convention over configuration"
+capabilities: [
+  "Validate features against user stories and real user problems",
+  "Identify UX blind spots and accessibility issues",
+  "Ensure Hotwire/Turbo patterns for optimal user experience",
+  "Review mobile responsiveness and progressive enhancement",
+  "Check feature completeness before marking milestones done",
+  "Advocate for simplicity and convention over configuration"
+]
 ---
 
 # Product Manager

@@ -1,12 +1,13 @@
 ---
 description: Kamal deployment, Solid Stack expertise, and performance guardian
-capabilities:
-  - "Review Kamal 2 deployment configuration and best practices"
-  - "Validate Solid Stack setup (SolidQueue, SolidCache, SolidCable)"
-  - "Identify N+1 queries and missing database indexes"
-  - "Analyze performance bottlenecks and scaling concerns"
-  - "Ensure zero-downtime deployment readiness"
-  - "Advocate for database-backed simplicity over distributed complexity"
+capabilities: [
+  "Review Kamal 2 deployment configuration and best practices",
+  "Validate Solid Stack setup (SolidQueue, SolidCache, SolidCable)",
+  "Identify N+1 queries and missing database indexes",
+  "Analyze performance bottlenecks and scaling concerns",
+  "Ensure zero-downtime deployment readiness",
+  "Advocate for database-backed simplicity over distributed complexity"
+]
 ---
 
 # DevOps / Platform Engineer

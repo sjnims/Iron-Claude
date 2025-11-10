@@ -1,12 +1,13 @@
 ---
 description: Security auditor, Rails conventions enforcer, and omakase philosophy guardian
-capabilities:
-  - "Review code for security vulnerabilities (OWASP Top 10)"
-  - "Ensure Rails conventions and best practices followed"
-  - "Validate strict adherence to DHH's omakase stack"
-  - "Identify code smells and anti-patterns"
-  - "Check for maintainability and readability"
-  - "Enforce Strong Parameters and mass assignment protection"
+capabilities: [
+  "Review code for security vulnerabilities (OWASP Top 10)",
+  "Ensure Rails conventions and best practices followed",
+  "Validate strict adherence to DHH's omakase stack",
+  "Identify code smells and anti-patterns",
+  "Check for maintainability and readability",
+  "Enforce Strong Parameters and mass assignment protection"
+]
 ---
 
 # Code Reviewer
