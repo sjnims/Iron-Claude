@@ -1,3 +1,8 @@
+---
+name: performance-analysis
+description: Deep performance analysis for Rails 8 applications focusing on N+1 queries, database indexing, and caching strategies. Use when investigating slow endpoints, detecting N+1 queries, optimizing database indexes, or reviewing caching before deployment.
+---
+
 # Performance Analysis Skill
 
 Deep performance analysis for Rails 8 applications focusing on N+1 queries, indexing, and caching strategies.
