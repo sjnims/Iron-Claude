@@ -1,3 +1,8 @@
+---
+name: rails-security-audit
+description: Comprehensive security auditing for Rails 8 applications using Brakeman and manual review. Use when reviewing authentication/authorization code, checking for OWASP Top 10 vulnerabilities, or validating security before deployment.
+---
+
 # Rails Security Audit Skill
 
 Comprehensive security auditing for Rails 8 applications with automated scanning and progressive disclosure.

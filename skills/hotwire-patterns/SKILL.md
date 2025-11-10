@@ -1,3 +1,8 @@
+---
+name: hotwire-patterns
+description: Expert guidance on Hotwire/Turbo 8 patterns for Rails 8 applications following DHH's omakase philosophy. Use when choosing between Turbo morphing/frames/streams, implementing real-time features, optimizing perceived performance, or converting from React/Vue to Hotwire.
+---
+
 # Hotwire Patterns Skill
 
 Expert guidance on Hotwire/Turbo 8 patterns for Rails 8 applications following DHH's omakase philosophy.
