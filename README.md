@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="docs/images/banner.svg?v=2" alt="Iron Claude Banner">
+  <img src="docs/images/banner.svg?v=3" alt="Iron Claude Banner">
 </p>
 
 # Iron Claude
 
-> **Your AI-Powered Rails 8 Omakase Dev Team in a Claude Code Plugin**
+> **An Opinionated Claude Code Plugin For Rails Developers**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Rails](https://img.shields.io/badge/Rails-8.0-red.svg)](https://rubyonrails.org)

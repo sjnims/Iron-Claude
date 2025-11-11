@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="images/banner.svg?v=2" alt="Iron Claude Banner">
+  <img src="images/banner.svg?v=3" alt="Iron Claude Banner">
 </p>
 
 # Iron Claude
 
-> **Your AI-Powered Rails 8 Omakase Dev Team in a Claude Code Plugin**
+> **An Opinionated Claude Code Plugin For Rails Developers**
 
 Iron Claude is a comprehensive Claude Code plugin that embodies DHH's omakase philosophy, providing four specialized personas that catch blind spots, enforce TDD workflows, and help solo developers ship production-ready Rails 8 applications with confidence.
 
